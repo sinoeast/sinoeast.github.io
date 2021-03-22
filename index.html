@@ -186,112 +186,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/bae4ff13/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Sinoeast">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sinoeast">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/bae4ff13/" class="post-title-link" itemprop="url">Redis</a>
-        </h2>
-
-        <div class="post-meta">
-
-    <i class="fa fa-thumb-tack"></i>
-    <font color=green>置顶</font>
-    <span class="post-meta-divider">|</span>
-
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-28 10:00:01" itemprop="dateCreated datePublished" datetime="2020-12-28T10:00:01+08:00">2020-12-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-30 15:32:14" itemprop="dateModified" datetime="2020-12-30T15:32:14+08:00">2020-12-30</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>45k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>41 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一、Nosql概述"><a href="#一、Nosql概述" class="headerlink" title="一、Nosql概述"></a>一、Nosql概述</h2><h3 id="为什么使用Nosql"><a href="#为什么使用Nosql" class="headerlink" title="为什么使用Nosql"></a>为什么使用Nosql</h3><blockquote>
-<p>1、单机Mysql时代</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/sinoeast/Mypic/master/uPic/2020082010365930.png" alt="在这里插入图片描述"></p>
-<p>90年代,一个网站的访问量一般不会太大，单个数据库完全够用。随着用户增多，网站出现以下问题==读写一体==</p>
-<ol>
-<li>数据量增加到一定程度，单机数据库就放不下了</li>
-<li>数据的索引（B+ Tree）,一个机器内存也存放不下</li>
-<li>访问量变大后（读写混合），一台服务器承受不住。</li>
-</ol>
-<blockquote>
-<p>2、Memcached(==缓存==) + Mysql + 垂直拆分（读写分离）+主从复制</p>
-</blockquote>
-<p>网站80%的情况都是在==读==，每次都要去查询数据库的话就十分的麻烦！所以说我们希望减轻数据库的压力，我们可以使用缓存来保证效率！</p>
-<p><img src="https://raw.githubusercontent.com/sinoeast/Mypic/master/uPic/image-20201222113208261.png" alt="image-20201222113208261"></p>
-<p>优化过程经历了以下几个过程：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/bae4ff13/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/posts/2b32338b/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -311,6 +205,10 @@
 
         <div class="post-meta">
 
+    <i class="fa fa-thumb-tack"></i>
+    <font color=green>置顶</font>
+    <span class="post-meta-divider">|</span>
+
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -318,7 +216,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-03-22 19:44:06 / 修改时间：19:45:56" itemprop="dateCreated datePublished" datetime="2021-03-22T19:44:06+08:00">2021-03-22</time>
+              <time title="创建时间：2021-03-22 19:44:06 / 修改时间：19:52:57" itemprop="dateCreated datePublished" datetime="2021-03-22T19:44:06+08:00">2021-03-22</time>
             </span>
 
           <br>
@@ -358,6 +256,92 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/2b32338b/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/6fc8eab5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sinoeast">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sinoeast">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/6fc8eab5/" class="post-title-link" itemprop="url">Markdown</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-22 19:51:25 / 修改时间：19:52:10" itemprop="dateCreated datePublished" datetime="2021-03-22T19:51:25+08:00">2021-03-22</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>101</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Markdown学习"><a href="#Markdown学习" class="headerlink" title="Markdown学习"></a>Markdown学习</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="4级标题"><a href="#4级标题" class="headerlink" title="4级标题"></a>4级标题</h4><p><strong>##</strong> <strong>字体</strong></p>
+<p><em>Hello</em></p>
+<p><strong>Hello</strong></p>
+<p><strong><em>Hello\</em></strong></p>
+<p><strong><del>Hello</del></strong></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a><strong>引用</strong></h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/6fc8eab5/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -453,6 +437,108 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/e16862ec/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/bae4ff13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Sinoeast">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sinoeast">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/bae4ff13/" class="post-title-link" itemprop="url">Redis</a>
+        </h2>
+
+        <div class="post-meta">
+
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-28 10:00:01" itemprop="dateCreated datePublished" datetime="2020-12-28T10:00:01+08:00">2020-12-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-22 19:52:42" itemprop="dateModified" datetime="2021-03-22T19:52:42+08:00">2021-03-22</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>45k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>41 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、Nosql概述"><a href="#一、Nosql概述" class="headerlink" title="一、Nosql概述"></a>一、Nosql概述</h2><h3 id="为什么使用Nosql"><a href="#为什么使用Nosql" class="headerlink" title="为什么使用Nosql"></a>为什么使用Nosql</h3><blockquote>
+<p>1、单机Mysql时代</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/sinoeast/Mypic/master/uPic/2020082010365930.png" alt="在这里插入图片描述"></p>
+<p>90年代,一个网站的访问量一般不会太大，单个数据库完全够用。随着用户增多，网站出现以下问题==读写一体==</p>
+<ol>
+<li>数据量增加到一定程度，单机数据库就放不下了</li>
+<li>数据的索引（B+ Tree）,一个机器内存也存放不下</li>
+<li>访问量变大后（读写混合），一台服务器承受不住。</li>
+</ol>
+<blockquote>
+<p>2、Memcached(==缓存==) + Mysql + 垂直拆分（读写分离）+主从复制</p>
+</blockquote>
+<p>网站80%的情况都是在==读==，每次都要去查询数据库的话就十分的麻烦！所以说我们希望减轻数据库的压力，我们可以使用缓存来保证效率！</p>
+<p><img src="https://raw.githubusercontent.com/sinoeast/Mypic/master/uPic/image-20201222113208261.png" alt="image-20201222113208261"></p>
+<p>优化过程经历了以下几个过程：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/bae4ff13/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -636,7 +722,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -649,7 +735,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -669,6 +755,10 @@
     </div>
     <ul class="links-of-blogroll-list">
       
+      
+        <li class="recent_posts_li">
+          <a href="/" title="" target="_blank"></a>
+        </li>
       
         <li class="recent_posts_li">
           <a href="/" title="" target="_blank"></a>
