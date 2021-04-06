@@ -22,15 +22,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="注解元注解◆元注解的作用就是负责注解其他注解,Java定义了4个标准的meta-annotation类型,他们被用来提供对其他 Annotation类型作说明 ◆这些类型和它们所支持的类在 java. lang. annotation包中可以找到、(@ Target,@ Retention，@Documented, @Inherited） @ Target:用于描述注解的使用范围(即被描述的注解可">
+<meta property="og:type" content="article">
 <meta property="og:title" content="注解与反射">
 <meta property="og:url" content="http://example.com/posts/41268e44/index.html">
 <meta property="og:site_name" content="Sinoeast">
+<meta property="og:description" content="注解元注解◆元注解的作用就是负责注解其他注解,Java定义了4个标准的meta-annotation类型,他们被用来提供对其他 Annotation类型作说明 ◆这些类型和它们所支持的类在 java. lang. annotation包中可以找到、(@ Target,@ Retention，@Documented, @Inherited） @ Target:用于描述注解的使用范围(即被描述的注解可">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/sinoeast/Mypic/master/uPic/image-20210406143937611.png">
 <meta property="article:published_time" content="2021-04-02T15:47:18.000Z">
-<meta property="article:modified_time" content="2021-04-02T15:47:19.007Z">
+<meta property="article:modified_time" content="2021-04-06T08:04:02.317Z">
 <meta property="article:author" content="Sinoeast">
+<meta property="article:tag" content="JavaSE">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/sinoeast/Mypic/master/uPic/image-20210406143937611.png">
 
 <link rel="canonical" href="http://example.com/posts/41268e44/">
 
@@ -212,10 +217,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-04-02 23:47:18 / 修改时间：23:47:19" itemprop="dateCreated datePublished" datetime="2021-04-02T23:47:18+08:00">2021-04-02</time>
+              <time title="创建时间：2021-04-02 23:47:18" itemprop="dateCreated datePublished" datetime="2021-04-02T23:47:18+08:00">2021-04-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-06 16:04:02" itemprop="dateModified" datetime="2021-04-06T16:04:02+08:00">2021-04-06</time>
+              </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -223,14 +234,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>0</span>
+              <span>1.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -242,7 +253,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><h2 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h2><p>◆元注解的作用就是负责注解其他注解,Java定义了4个标准的meta-annotation类型,他们被用来提供对其他 Annotation类型作说明</p>
+<p>◆这些类型和它们所支持的类在 java. lang. annotation包中可以找到、(@ Target,@ Retention，@Documented, @Inherited）</p>
+<p>@ Target:用于描述注解的使用范围(即被描述的注解可以用在什么地方)</p>
+<p>@ Retention:表示需要在什么级别保存该注释信息,用于描述注解的生命周期（SOURCE&lt;CLASS&lt;RUNTIME)</p>
+<p>@ Document:说明该注解将被包含在 javadoc中</p>
+<p>@ Inherited:说明子类可以继承父类中的该注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试元注解</span></span><br><span class="line"><span class="meta">@MyAnnotation</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果没有默认值，必须赋值</span></span><br><span class="line">    <span class="meta">@MyAnnotation(name = &quot;lant&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@MyAnnotation2(&quot;lant&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Target(value = &#123;ElementType.METHOD,ElementType.TYPE&#125;)</span></span><br><span class="line"><span class="meta">@Retention(value = RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@interface</span> MyAnnotation&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//注解的参数:参数类型+参数名()</span></span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@interface</span> MyAnnotation2&#123;</span><br><span class="line">    <span class="comment">//value可以默认</span></span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><p><img src="https://raw.githubusercontent.com/sinoeast/Mypic/master/uPic/image-20210406143937611.png" alt="image-20210406143937611"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//通过反射获取类的class对象</span></span><br><span class="line">        Class c1=Class.forName(<span class="string">&quot;AnnotationsAndReflection.Reflection.User&quot;</span>);</span><br><span class="line">        System.out.println(c1);</span><br><span class="line">        Class c2=Class.forName(<span class="string">&quot;AnnotationsAndReflection.Reflection.User&quot;</span>);</span><br><span class="line">        <span class="comment">//一个类在内存中只有一个class对象</span></span><br><span class="line">        <span class="comment">//一个类被加载后,类的整个结构都会被封装在Class对象中</span></span><br><span class="line">        System.out.println(c1.hashCode());</span><br><span class="line">        System.out.println(c2.hashCode());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//class类的创建方式</span></span><br><span class="line">User user= <span class="keyword">new</span> VipUser();</span><br><span class="line">System.out.println(user.name);</span><br><span class="line"><span class="comment">//方式一：通过对象获得</span></span><br><span class="line">Class cs1=user.getClass();</span><br><span class="line">System.out.println(cs1.hashCode());</span><br><span class="line"></span><br><span class="line"><span class="comment">//方式二：forname获得</span></span><br><span class="line">Class cs2=Class.forName(<span class="string">&quot;AnnotationsAndReflection.Reflection.VipUser&quot;</span>);</span><br><span class="line">System.out.println(cs2.hashCode());</span><br><span class="line"></span><br><span class="line"><span class="comment">//方式三：通过类名.class获得</span></span><br><span class="line">Class cs3=VipUser.class;</span><br><span class="line">System.out.println(cs3.hashCode());</span><br><span class="line"></span><br><span class="line"><span class="comment">//方式四：基本内置类型的包装类都有一个TYPE属性</span></span><br><span class="line">Class cs4= Character.TYPE;</span><br><span class="line">System.out.println(cs4.hashCode());</span><br><span class="line"></span><br><span class="line"><span class="comment">//获得父类类型</span></span><br><span class="line">Class cs5=cs1.getSuperclass();</span><br><span class="line">System.out.println(cs5.hashCode());</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -269,6 +290,9 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaSE/" rel="tag"><i class="fa fa-tag"></i>JavaSE</a>
+          </div>
 
         
 
@@ -338,6 +362,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">注解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.1.</span> <span class="nav-text">元注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84"><span class="nav-number">2.</span> <span class="nav-text">反射</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -364,7 +389,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -435,12 +460,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">122k</span>
+    <span title="站点总字数">124k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:51</span>
+    <span title="站点阅读时长">1:53</span>
 </div>
 <!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动

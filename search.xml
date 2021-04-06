@@ -380,13 +380,26 @@
 
 <h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1>]]></content>
       <tags>
-        <tag>Java</tag>
+        <tag>JavaSE</tag>
       </tags>
   </entry>
   <entry>
     <title>注解与反射</title>
     <url>/posts/41268e44/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><h2 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h2><p>◆元注解的作用就是负责注解其他注解,Java定义了4个标准的meta-annotation类型,他们被用来提供对其他 Annotation类型作说明</p>
+<p>◆这些类型和它们所支持的类在 java. lang. annotation包中可以找到、(@ Target,@ Retention，@Documented, @Inherited）</p>
+<p>@ Target:用于描述注解的使用范围(即被描述的注解可以用在什么地方)</p>
+<p>@ Retention:表示需要在什么级别保存该注释信息,用于描述注解的生命周期（SOURCE&lt;CLASS&lt;RUNTIME)</p>
+<p>@ Document:说明该注解将被包含在 javadoc中</p>
+<p>@ Inherited:说明子类可以继承父类中的该注解</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试元注解</span></span><br><span class="line"><span class="meta">@MyAnnotation</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果没有默认值，必须赋值</span></span><br><span class="line">    <span class="meta">@MyAnnotation(name = &quot;lant&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@MyAnnotation2(&quot;lant&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Target(value = &#123;ElementType.METHOD,ElementType.TYPE&#125;)</span></span><br><span class="line"><span class="meta">@Retention(value = RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@interface</span> MyAnnotation&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//注解的参数:参数类型+参数名()</span></span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@interface</span> MyAnnotation2&#123;</span><br><span class="line">    <span class="comment">//value可以默认</span></span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><p><img src="https://raw.githubusercontent.com/sinoeast/Mypic/master/uPic/image-20210406143937611.png" alt="image-20210406143937611"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//通过反射获取类的class对象</span></span><br><span class="line">        Class c1=Class.forName(<span class="string">&quot;AnnotationsAndReflection.Reflection.User&quot;</span>);</span><br><span class="line">        System.out.println(c1);</span><br><span class="line">        Class c2=Class.forName(<span class="string">&quot;AnnotationsAndReflection.Reflection.User&quot;</span>);</span><br><span class="line">        <span class="comment">//一个类在内存中只有一个class对象</span></span><br><span class="line">        <span class="comment">//一个类被加载后,类的整个结构都会被封装在Class对象中</span></span><br><span class="line">        System.out.println(c1.hashCode());</span><br><span class="line">        System.out.println(c2.hashCode());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//class类的创建方式</span></span><br><span class="line">User user= <span class="keyword">new</span> VipUser();</span><br><span class="line">System.out.println(user.name);</span><br><span class="line"><span class="comment">//方式一：通过对象获得</span></span><br><span class="line">Class cs1=user.getClass();</span><br><span class="line">System.out.println(cs1.hashCode());</span><br><span class="line"></span><br><span class="line"><span class="comment">//方式二：forname获得</span></span><br><span class="line">Class cs2=Class.forName(<span class="string">&quot;AnnotationsAndReflection.Reflection.VipUser&quot;</span>);</span><br><span class="line">System.out.println(cs2.hashCode());</span><br><span class="line"></span><br><span class="line"><span class="comment">//方式三：通过类名.class获得</span></span><br><span class="line">Class cs3=VipUser.class;</span><br><span class="line">System.out.println(cs3.hashCode());</span><br><span class="line"></span><br><span class="line"><span class="comment">//方式四：基本内置类型的包装类都有一个TYPE属性</span></span><br><span class="line">Class cs4= Character.TYPE;</span><br><span class="line">System.out.println(cs4.hashCode());</span><br><span class="line"></span><br><span class="line"><span class="comment">//获得父类类型</span></span><br><span class="line">Class cs5=cs1.getSuperclass();</span><br><span class="line">System.out.println(cs5.hashCode());</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
   </entry>
   <entry>
     <title>多线程</title>
@@ -486,7 +499,7 @@
 
 ]]></content>
       <tags>
-        <tag>Java</tag>
+        <tag>JavaSE</tag>
       </tags>
   </entry>
   <entry>
